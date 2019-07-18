@@ -1,12 +1,13 @@
-const {VKApi, ConsoleLogger, BotsLongPollUpdatesProvider} = require('node-vk-sdk')
+const easyvk = require('easyvk')
 
-let api = new VKApi({
-    logger: new ConsoleLogger(),
-    token: "2424df8c7c62aabbc8afbf324b99c6c315701ff028b535480453bc605752dac8ab43e07b0b5c79d91a2bb"
-})
+easyvk({
+	access_token: '2424df8c7c62aabbc8afbf324b99c6c315701ff028b535480453bc605752dac8ab43e07b0b5c79d91a2bb',
+	message: "Мы постараемся ответить в ближайшее время.",
+	random_id: 747379,
+	v: '5.101'
+}).then(vk => {
 
-let updatesProvider = new BotsLongPollUpdatesProvider(api, "109331723")
+  console.log(vk.session.group_id);
 
-updatesProvider.getUpdates(updates => {
-    console.log('got updates: ', updates)
+
 })
